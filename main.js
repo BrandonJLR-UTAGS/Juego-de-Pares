@@ -60,7 +60,7 @@ console.log(kards);
 //Funcion pa girar las cartas
 function MostrarCarta(id) {
   cartasDestapadas++;
-  // console.log(cartasDestapadas);
+  console.log(cartasDestapadas);
   console.log(CartaSelecionada);
 
   if (cartasDestapadas == 1) {
@@ -78,6 +78,10 @@ function MostrarCarta(id) {
     kard2.innerHTML = `<img src="./images/${SegundaCarta}.jpg" alt="">`;
     //apagar carta
     kard2.disabled = true;
+
+    //
+    
+
   } else {
     //gira las cartas //gira las cartas segun el ID de la carta
     CartaSelecionada = document.getElementById(id);
@@ -86,5 +90,18 @@ function MostrarCarta(id) {
     CartaSelecionada.innerHTML = `<img src="./images/${Carta}.jpg" alt="">`;
     //Se apaga el boton
     CartaSelecionada.disabled = true;
+    
+    
+  }
+  //si se selecciona una tercera carta se voltean las cartas antes selecionadas
+  if(cartasDestapadas >= 3){
+    
+    kard1.innerHTML='';
+    kard2.innerHTML = '';
+    CartaSelecionada.innerHTML='';
+    kard1.disabled=false;
+    kard2.disabled=false;
+    CartaSelecionada.disabled=false;
+    cartasDestapadas=0;
   }
 }
