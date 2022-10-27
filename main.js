@@ -7,9 +7,17 @@ let SegundaCarta = null;
 let CartaSelecionada = null;
 let movimientos = null;
 let aciertos = null;
+let tiempo= 0;
+let ComenzoPartida=false;
+TiempoPartida= null;
+
+
+
 //Elementos del HTML
 let ImprimirMovimientos = document.getElementById('movimientos');
 let ImprimirAciertos = document.getElementById('aciertos');
+let ImprimirTiempo = document.getElementById('tiempo');
+
 
 //array de cartas
 let kards = [
@@ -29,6 +37,32 @@ let kards = [
   "carta14",
   "carta15",
   "carta16",
+  "carta17",
+  "carta18",
+  "carta19",
+  "carta20",
+  "carta21",
+  "carta22",
+  "carta23",
+  "carta24",
+  "carta25",
+  "carta26",
+  "carta27",
+  "carta28",
+  "carta29",
+  "carta30",
+  "carta31",
+  "carta32",
+  "carta33",
+  "carta34",
+  "carta35",
+  "carta36",
+  "carta37",
+  "carta38",
+  "carta39"
+
+  
+
   
 ];
 
@@ -66,6 +100,18 @@ kards = UnionKardCopiadas.sort(() => {
 
 console.log(kards)
 
+//Cuenta el tiempo de la partida
+function Cronometro(){
+  TiempoPartida = setInterval(()=>{
+    tiempo++;
+    ImprimirTiempo.innerHTML =`Tiempo: ${tiempo} Segundos`
+    if(aciertos == 8){
+      clearInterval(TiempoPartida);
+      ImprimirTiempo.innerHTML =`!!Felicidades terminaste en ${tiempo} Segundos !!`
+    }
+  },1000);
+}
+
 // //Muestra tarjetas restantes
 // function BloquearTarjetas(kards){
 //     for(let i=0; i<=15; i++){
@@ -77,6 +123,12 @@ console.log(kards)
 
 //Funcion pa girar las cartas
 function MostrarCarta(id) {
+  //Comienza a correr el tiempo
+  if(ComenzoPartida == false){
+    Cronometro();
+    ComenzoPartida = true;
+  }
+
   cartasDestapadas++;
   console.log(cartasDestapadas);
   console.log(CartaSelecionada);
